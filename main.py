@@ -64,8 +64,3 @@ if user_input:
 
     # Add AI response to history
     st.session_state.messages.append({"type": "ai", "content": response.content})
-
-# --- Display previous messages ---
-for msg in st.session_state.messages:
-    with st.chat_message(msg["type"]):
-        st.write(msg["content"])
