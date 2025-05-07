@@ -3,7 +3,7 @@ from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 import os
 from dotenv import load_dotenv
-import time  # For simulating delay
+import time  # For simulating delay (you can adjust or remove this)
 
 load_dotenv()
 
@@ -40,7 +40,7 @@ if user_input:
     # Add user input to history
     st.session_state.messages.append({"type": "human", "content": user_input})
 
-    # Show the "thinking" message temporarily
+    # Show the "thinking" message temporarily while AI is processing
     with st.chat_message("ai"):
         st.write("Thinking... Please wait.")
 
@@ -49,9 +49,6 @@ if user_input:
         {"messages": st.session_state.messages},
         config={"configurable": {"session_id": "default"}}
     )
-
-    # Simulate thinking delay (remove or adjust as needed)
-    time.sleep(1)
 
     # Remove the "Thinking..." message and display the AI response
     st.session_state.messages.append({"type": "ai", "content": response.content})
